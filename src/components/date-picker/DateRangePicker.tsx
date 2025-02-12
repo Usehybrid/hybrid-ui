@@ -138,6 +138,7 @@ export function DateRangePicker({
       case 'custom':
         break
       default:
+        onChange({from: value, to: value})
         break
     }
   }
