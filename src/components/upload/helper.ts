@@ -62,7 +62,7 @@ export function renderFileTypes(extensions: string): string {
     '.doc': 'Doc',
     '.docx': 'Docx',
     'image/png': 'PNG',
-    'image/jpeg': 'JPEG',
+    'image/jpeg': 'JPEG, JPG',
     'image/webp': 'WEBP',
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'Xlsx',
     'application/vnd.ms-excel': 'Xls',
@@ -75,9 +75,14 @@ export function renderFileTypes(extensions: string): string {
   extensionList.forEach(extension => {
     const fileType = extensionMap[extension]
     if (fileType) {
-      fileTypesSet.add(fileType)
+      fileType.split(', ').forEach(type => fileTypesSet.add(type))
     }
   })
 
-  return Array.from(fileTypesSet).join(', ')
+  const fileTypes = Array.from(fileTypesSet)
+
+  if (fileTypes.length === 0) return ''
+  if (fileTypes.length === 1) return `${fileTypes[0]} only`
+
+  return `${fileTypes.slice(0, -1).join(', ')} and ${fileTypes[fileTypes.length - 1]}`
 }

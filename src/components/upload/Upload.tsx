@@ -365,7 +365,7 @@ UploadProps) {
                   <div className={clsx(classes.subTitle, disabled ? classes.disabledSubTitle : '')}>
                     <span>File Type: </span>
                     <b>{addDocumentSubtitle}</b>
-                    <b>{renderFileTypes(acceptedFileTypes)}</b>
+                    <b> {renderFileTypes(acceptedFileTypes)}.</b>
                     <div className={classes.smallCircle}></div>
                     Max size per file: <b>{`${uploadFileLimit || 5} MB`}</b>
                     <div className={classes.smallCircle}></div>
